@@ -1,0 +1,35 @@
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+
+# Created by https://www.toptal.com/developers/gitignore/api/playframework,scala
+# Edit at https://www.toptal.com/developers/gitignore?templates=playframework,scala
+
+### PlayFramework ###
+# Ignore Play! working directory #
+bin/
+/db
+.eclipse
+/lib/
+/logs/
+/modules
+/project/project
+/project/target
+/target
+tmp/
+test-result
+server.pid
+*.eml
+/dist/
+.cache
+
+### Scala ###
+*.class
+*.log
+
+# End of https://www.toptal.com/developers/gitignore/api/playframework,scala

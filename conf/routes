@@ -1,0 +1,50 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+GET     /2                          controllers.HomeController.index2
+GET     /todo                       controllers.HomeController.todo
+GET     /index-result               controllers.HomeController.indexResult
+GET     /ok-as-html                 controllers.HomeController.okAsHtml
+GET     /ok-as-xml                  controllers.HomeController.okAsXml
+GET     /ok-as-json                 controllers.HomeController.okAsJson
+GET     /ok-with-headers            controllers.HomeController.okWithHeaders
+GET     /params/:id                        controllers.HomeController.okWithParams(id:Int)
+GET     /params/:id/:name                  controllers.HomeController.okWithMultipleParams(id:Int, name:String)
+GET     /query/:id/                 controllers.HomeController.okWithQuery(id:Int, name:Option[String])
+GET     /cookie/                    controllers.HomeController.saveCookie(name:Option[String])
+GET     /session/                   controllers.HomeController.saveSession(name:Option[String])
+GET     /sessions/                  controllers.HomeController.saveSessions(name:Option[String], value:Option[String])
+GET     /view/                      controllers.HomeController.showIndex
+GET     /view/index/                controllers.HomeController.showIndexWithTemplateParam
+
+# ワーニングが出るので、 `()` を追加する
+#  Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method showIndexWithMultiTemplateParam,
+#  [warn] or remove the empty argument list from its definition (Java-defined methods are exempt)
+GET     /view/index-multi/          controllers.HomeController.showIndexWithMultiTemplateParam()
+GET     /view/index-object/         controllers.HomeController.showIndexWithObject()
+GET     /view/stylesheet/           controllers.HomeController.showStyleSheet()
+GET     /view/extend/               controllers.HomeController.showExtendPage()
+GET     /view/block/                controllers.HomeController.showBlockPage(p:Option[Int])
+
+GET     /form/                      controllers.HomeController.formGet()
+# application.confで無効化するのは影響が大きいので、nocsrfタグで無効化する
+# https://takezoe.hatenablog.com/entry/2017/07/04/141339
++nocsrf
+POST    /form/                      controllers.HomeController.formPost()
+
+# FormHelperを使ったフォーム
+GET     /form-helper/               controllers.MyFormController.index()
+POST    /form-helper/               controllers.MyFormController.form()
+
+# JDBCによるDBアクセス
+GET     /jdbc/                      controllers.JdbcController.index()
+GET     /jdbc/add                   controllers.JdbcController.add()
+POST    /jdbc/create                controllers.JdbcController.create()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,0 +1,33 @@
+@(contentMessage: String, p: Int, data: List[List[String]], headers: List[String])
+
+@* 独自ブロック *@
+@makeTable(data: List[List[String]], headers: List[String]) = {
+  <table>
+    <tr>
+      @for(header <- headers) {
+        <th>@header</th>
+      }
+    </tr>
+
+    @for(row <- data) {
+      <tr>
+        @for(item <- row) {
+          <td>@item</td>
+        }
+      </tr>
+    }
+  </table>
+}
+
+@base("Extend Page Title", "header string", "footer string", contentMessage) {
+  <p>これはbaseを拡張したページです</p>
+  <p>@contentMessage</p>
+
+  @if(p % 2 == 0) {
+    <p>@p は偶数です</p>
+  } else {
+    <p>@p は奇数です</p>
+  }
+
+  @makeTable(data, headers)
+}

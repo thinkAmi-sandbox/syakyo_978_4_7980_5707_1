@@ -1,0 +1,52 @@
+body {
+    padding: 0px 30px;
+}
+
+header div.header {
+    font-size: 72pt;
+    font-weight: bold;
+    text-align: left;
+    letter-spacing: -8px;
+    color: #f0f0f0;
+    margin: -30px -25px;
+}
+
+h1 {
+    color: #77b;
+    font-size: 30pt;
+    font-weight: bold;
+    text-align: left;
+    margin: -85px 0px 0px 0px;
+}
+
+article {
+    color: #567;
+    font-size: 14pt;
+}
+
+footer {
+    color: #66e;
+    text-align: center;
+    font-size: 12pt;
+}
+
+.row {
+    margin: 15px 0px;
+    border-bottom: solid 1px #ddd;
+}
+
+table {
+    margin: 10px 0px;
+}
+
+table tr th {
+    padding: 5px 15px;
+    color: #fff;
+    background-color: #009;
+}
+
+table tr td {
+    padding: 5px 15px;
+    color: #006;
+    background-color: #eef;
+}

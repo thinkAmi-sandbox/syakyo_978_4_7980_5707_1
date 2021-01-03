@@ -1,0 +1,6 @@
+@(contentMessage: String)
+
+@base("Extend Page Title", "header string", "footer string", contentMessage) {
+  <p>これはbaseを拡張したページです</p>
+  <p>@contentMessage</p>
+}

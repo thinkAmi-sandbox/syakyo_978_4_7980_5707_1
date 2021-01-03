@@ -1,0 +1,24 @@
+@(message: String, myForm: Form[MyForm.Data])(implicit request: MessagesRequestHeader)
+
+@base("title", "header", "footer", "message") {
+    <p>@message</p>
+
+    @* FormHelperを使ってフォームを生成 *@
+    @helper.form(action = routes.MyFormController.form) {
+        @helper.CSRF.formField
+        @helper.inputText(myForm("name"))
+        @helper.inputPassword(myForm("password"))
+
+        @* SelectタグのOptionにSeqインスタンスとして、キーと値をセット *@
+        @helper.inputRadioGroup(myForm("radio"),
+            options = Seq(
+                "シナノゴールド" -> "ShinanoGold",
+                "フジ" -> "Fuji",
+                "シナノドルチェ" -> "ShinanoDolce",
+            )
+        )
+
+        @* デフォルトでは送信ボタンが生成されないことに注意 *@
+        <button>send form</button>
+    }
+}
