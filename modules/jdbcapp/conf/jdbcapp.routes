@@ -1,0 +1,51 @@
+# Routes
+# This file defines all application jdbc_app.anormapp.anormapp.routes (Higher priority jdbc_app.anormapp.anormapp.routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# ワーニングが出るので、 `()` を追加する
+#  Auto-application to `()` is deprecated. Supply the empty argument list `()` explicitly to invoke method showIndexWithMultiTemplateParam,
+#  [warn] or remove the empty argument list from its definition (Java-defined methods are exempt)
+GET     /                           controllers.jdbcapp.HomeController.index()
+GET     /2                          controllers.jdbcapp.HomeController.index2()
+GET     /todo                       controllers.jdbcapp.HomeController.todo()
+GET     /index-result               controllers.jdbcapp.HomeController.indexResult()
+GET     /ok-as-html                 controllers.jdbcapp.HomeController.okAsHtml()
+GET     /ok-as-xml                  controllers.jdbcapp.HomeController.okAsXml()
+GET     /ok-as-json                 controllers.jdbcapp.HomeController.okAsJson()
+GET     /ok-with-headers            controllers.jdbcapp.HomeController.okWithHeaders()
+GET     /params/:id                 controllers.jdbcapp.HomeController.okWithParams(id:Int)
+GET     /params/:id/:name           controllers.jdbcapp.HomeController.okWithMultipleParams(id:Int, name:String)
+GET     /query/:id/                 controllers.jdbcapp.HomeController.okWithQuery(id:Int, name:Option[String])
+GET     /cookie/                    controllers.jdbcapp.HomeController.saveCookie(name:Option[String])
+GET     /session/                   controllers.jdbcapp.HomeController.saveSession(name:Option[String])
+GET     /sessions/                  controllers.jdbcapp.HomeController.saveSessions(name:Option[String], value:Option[String])
+GET     /view/                      controllers.jdbcapp.HomeController.showIndex()
+GET     /view/index/                controllers.jdbcapp.HomeController.showIndexWithTemplateParam()
+GET     /view/index-multi/          controllers.jdbcapp.HomeController.showIndexWithMultiTemplateParam()
+GET     /view/index-object/         controllers.jdbcapp.HomeController.showIndexWithObject()
+GET     /view/stylesheet/           controllers.jdbcapp.HomeController.showStyleSheet()
+GET     /view/extend/               controllers.jdbcapp.HomeController.showExtendPage()
+GET     /view/block/                controllers.jdbcapp.HomeController.showBlockPage(p:Option[Int])
+
+GET     /form/                      controllers.jdbcapp.HomeController.formGet()
+# application.confで無効化するのは影響が大きいので、nocsrfタグで無効化する
+# https://takezoe.hatenablog.com/entry/2017/07/04/141339
++nocsrf
+POST    /form/                      controllers.jdbcapp.HomeController.formPost()
+
+# FormHelperを使ったフォーム
+GET     /form-helper/               controllers.jdbcapp.MyFormController.index()
+POST    /form-helper/               controllers.jdbcapp.MyFormController.form()
+
+# JDBCによるDBアクセス
+GET     /list                      controllers.jdbcapp.JdbcController.index()
+GET     /add                       controllers.jdbcapp.JdbcController.add()
+POST    /create                    controllers.jdbcapp.JdbcController.create()
+GET     /edit/:id                  controllers.jdbcapp.JdbcController.edit(id: Int)
+POST    /update/:id                controllers.jdbcapp.JdbcController.update(id: Int)
+GET     /delete/:id                controllers.jdbcapp.JdbcController.delete(id: Int)
+POST    /remove/:id                controllers.jdbcapp.JdbcController.remove(id: Int)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

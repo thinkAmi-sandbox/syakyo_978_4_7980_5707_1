@@ -1,0 +1,18 @@
+@(message: String, data: controllers.jdbcapp.Person.Attr, id: Int)(implicit request: MessagesRequestHeader)
+
+@main("Delete Person") {
+    <p>@message</p>
+    <p>ID = @id</p>
+
+    <ul>
+        <li>name: @data.name</li>
+        <li>mail: @data.mail</li>
+        <li>tel: @data.tel</li>
+    </ul>
+
+    @helper.form(action=controllers.jdbcapp.routes.JdbcController.remove(id)) {
+        @helper.CSRF.formField
+
+        <button>Delete Person</button>
+    }
+}

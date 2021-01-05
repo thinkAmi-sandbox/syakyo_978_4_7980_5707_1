@@ -8,7 +8,7 @@ import play.api.data.Forms._
 
 case class $model;format="Camel"$Data(name: String, age: Int)
 
-// NOTE: Add the following to conf/jdbc_app.anormapp.anormapp.routes to enable compilation of this class:
+// NOTE: Add the following to conf/anormapp.routes to enable compilation of this class:
 /*
 GET     /$model;format="camel"$        controllers.$model;format="Camel"$Controller.$model;format="camel"$Get
 POST    /$model;format="camel"$        controllers.$model;format="Camel"$Controller.$model;format="camel"$Post

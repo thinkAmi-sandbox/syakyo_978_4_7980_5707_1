@@ -1,0 +1,12 @@
+@(message: String, item: controllers.anormapp.AnormForm.AnormData)
+
+@main("Welcome to Play") {
+  <p>@Html(message)</p>
+
+  <ul>
+    <li>ID: @item.id</li>
+    <li>NAME: @item.name</li>
+    <li>MAIL: @item.mail</li>
+    <li>TEL: @item.tel</li>
+  </ul>
+}

@@ -17,7 +17,6 @@ bin/
 .eclipse
 /lib/
 /logs/
-/modules
 /project/project
 /project/target
 /target

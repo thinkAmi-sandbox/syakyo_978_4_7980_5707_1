@@ -1,0 +1,17 @@
+@(message: String, form: Form[controllers.anormapp.AnormForm.AnormData], id: Int)(implicit request: MessagesRequestHeader)
+
+@main("Edit Person") {
+    <p>@message</p>
+
+    @helper.form(action=controllers.anormapp.routes.AnormController.update(id)) {
+        <input type="hidden" name="id" value="@id">
+
+        @helper.CSRF.formField
+        @helper.inputText(form("name"))
+        @helper.inputText(form("mail"))
+        @helper.inputText(form("tel"))
+
+        @* 更新なので、文言を変更 *@
+        <button>Update Person</button>
+    }
+}
