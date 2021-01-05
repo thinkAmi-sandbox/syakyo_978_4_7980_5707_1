@@ -1,0 +1,11 @@
+@(message: String, result: List[PersonForm.AnormData])
+
+@main("Welcome to Play") {
+  <p>@Html(message)</p>
+
+  <ul>
+    @for(item <- result) {
+      <li>@item.name: @item.mail (@item.tel)</li>
+    }
+  </ul>
+}

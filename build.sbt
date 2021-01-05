@@ -16,6 +16,13 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "com.thinkami.play.binders._"
 
+
+// JDBC
 libraryDependencies += "com.h2database" % "h2" % "1.4.197"
 libraryDependencies += evolutions
 libraryDependencies += javaJdbc
+
+// Anorm
+// 2.6.2と2.6.3ではDownloadエラーになったので、Githubのissueにより2.6.4にしたらOKとなった
+// https://github.com/playframework/anorm/issues/208
+libraryDependencies += "org.playframework.anorm" %% "anorm" % "2.6.4"

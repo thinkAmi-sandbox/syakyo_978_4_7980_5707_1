@@ -1,0 +1,15 @@
+@(message: String, form: Form[PersonForm.Data], id: Int)(implicit request: MessagesRequestHeader)
+
+@main("Edit Person") {
+    <p>@message</p>
+
+    @helper.form(action=routes.JdbcController.update(id)) {
+        @helper.CSRF.formField
+        @helper.inputText(form("name"))
+        @helper.inputText(form("mail"))
+        @helper.inputText(form("tel"))
+
+        @* 更新なので、文言を変更 *@
+        <button>Update Person</button>
+    }
+}

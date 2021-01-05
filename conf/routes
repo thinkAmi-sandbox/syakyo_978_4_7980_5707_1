@@ -44,7 +44,22 @@ POST    /form-helper/               controllers.MyFormController.form()
 GET     /jdbc/                      controllers.JdbcController.index()
 GET     /jdbc/add                   controllers.JdbcController.add()
 POST    /jdbc/create                controllers.JdbcController.create()
+GET     /jdbc/edit/:id              controllers.JdbcController.edit(id: Int)
+POST    /jdbc/update/:id            controllers.JdbcController.update(id: Int)
+GET     /jdbc/delete/:id            controllers.JdbcController.delete(id: Int)
+POST    /jdbc/remove/:id            controllers.JdbcController.remove(id: Int)
 
+# AnormによるDBアクセス
+GET     /anorm/                      controllers.AnormController.index()
+GET     /anorm/multi-values          controllers.AnormController.multi_values()
+GET     /anorm/parser                controllers.AnormController.index_parser()
+GET     /anorm/single/:id            controllers.AnormController.showSingle(id: Int)
+GET     /anorm/add                   controllers.AnormController.add()
+POST    /anorm/create                controllers.AnormController.create()
+GET     /anorm/edit/:id              controllers.AnormController.edit(id: Int)
+POST    /anorm/update/:id            controllers.AnormController.update(id: Int)
+GET     /anorm/delete/:id            controllers.AnormController.delete(id: Int)
+POST    /anorm/remove/:id            controllers.AnormController.remove(id: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
