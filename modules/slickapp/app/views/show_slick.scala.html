@@ -1,0 +1,12 @@
+@(message: String, person: models.slickapp.SlickPerson)
+
+@main("Show Person"){
+    <p>@message</p>
+
+    <ul>
+        <li>ID: @person.id</li>
+        <li>NAME: @person.name</li>
+        <li>MAIL: @person.mail</li>
+        <li>FAX: @person.fax</li>
+    </ul>
+}

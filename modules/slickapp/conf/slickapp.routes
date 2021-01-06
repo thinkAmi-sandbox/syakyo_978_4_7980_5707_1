@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application slickapp.routes (Higher priority slickapp.routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+GET     /list                           controllers.slickapp.SlickController.index()
+GET     /add                            controllers.slickapp.SlickController.add()
+POST    /create                         controllers.slickapp.SlickController.create()
+GET     /show/:id                       controllers.slickapp.SlickController.show(id: Int)
+GET     /edit/:id                       controllers.slickapp.SlickController.edit(id: Int)
+POST    /update/:id                     controllers.slickapp.SlickController.update(id: Int)
+GET     /delete/:id                     controllers.slickapp.SlickController.delete(id: Int)
+POST    /remove/:id                     controllers.slickapp.SlickController.remove(id: Int)
+GET     /find                           controllers.slickapp.SlickController.find()
+POST    /search                         controllers.slickapp.SlickController.search()
+GET     /like                           controllers.slickapp.SlickController.like()
+POST    /search-like                    controllers.slickapp.SlickController.searchLike()
+GET     /like-multiple                  controllers.slickapp.SlickController.likeMultiple()
+POST    /search-like-multiple           controllers.slickapp.SlickController.searchLikeMultiple()

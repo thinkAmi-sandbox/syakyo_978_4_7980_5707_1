@@ -1,0 +1,10 @@
+@(message: String, data: Seq[models.slickapp.SlickPerson])(implicit request: MessagesRequestHeader)
+
+@main("Index Page") {
+  <p>@Html(message)</p>
+  <ul>
+    @for(item <- data){
+      <li>@item.id: @item.name [@item.mail, @item.fax]</li>
+    }
+  </ul>
+}

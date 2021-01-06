@@ -1,0 +1,14 @@
+@import models.slickapp.SlickPersonForm
+@(message: String, form: Form[SlickPersonForm], id: Int)(implicit request: MessagesRequestHeader)
+
+@main("Edit Person"){
+    <p>@message</p>
+    @helper.form(action=controllers.slickapp.routes.SlickController.update(id)) {
+        @helper.CSRF.formField
+        @helper.inputText(form("name"))
+        @helper.inputText(form("mail"))
+        @helper.inputText(form("fax"))
+
+        <button>Update Person</button>
+    }
+}
