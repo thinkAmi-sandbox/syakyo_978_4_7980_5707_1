@@ -17,3 +17,5 @@ GET     /like                           controllers.slickapp.SlickController.lik
 POST    /search-like                    controllers.slickapp.SlickController.searchLike()
 GET     /like-multiple                  controllers.slickapp.SlickController.likeMultiple()
 POST    /search-like-multiple           controllers.slickapp.SlickController.searchLikeMultiple()
+GET     /message                        controllers.slickapp.SlickController.message()
+POST    /message                        controllers.slickapp.SlickController.addMessage()

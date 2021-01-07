@@ -1,7 +1,10 @@
-@(message: String, data: Seq[models.slickapp.SlickPerson])(implicit request: MessagesRequestHeader)
+@(message: String, data: Seq[models.slickapp.SlickPerson])(implicit request: MessagesRequestHeader, flash: Flash)
+@* Flashメッセージを表示するため、@()にFlashを追加 *@
+@* implicitの部分を改行するとコンパイルエラーになるので注意 *@
 
 @main("Index Page") {
-  <p>@Html(message)</p>
+  @* flashメッセージもしくは初期メッセージを表示 *@
+  <p>@flash.get("success").getOrElse(message)</p>
   <ul>
     @for(item <- data){
       <li>@item.id: @item.name [@item.mail, @item.fax]</li>

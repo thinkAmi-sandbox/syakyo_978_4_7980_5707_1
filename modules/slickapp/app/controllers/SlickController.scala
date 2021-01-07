@@ -1,6 +1,6 @@
 package controllers.slickapp
 
-import models.slickapp.{SlickPerson, SlickPersonForm, SlickPersonRepository}
+import models.slickapp.{Message, MessageRepository, SlickPerson, SlickPersonForm, SlickPersonRepository}
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
@@ -14,8 +14,9 @@ import javax.inject._
 
 @Singleton
 class SlickController @Inject() (
-                                  repository: SlickPersonRepository, // リポジトリのインスタンス
-                                  cc: MessagesControllerComponents
+                                  repository: SlickPersonRepository, // Personリポジトリのインスタンス
+                                  messageRepo: MessageRepository,  // Messageリポジトリのインスタンス
+                                  cc: MessagesControllerComponents,
                                 )(implicit ec: ExecutionContext)
 extends MessagesAbstractController(cc) {
   // listが非同期のため、Action.asyncを使う
@@ -44,6 +45,7 @@ extends MessagesAbstractController(cc) {
       person => {
         repository.create(person.name, person.mail, person.fax).map {_ =>
           Redirect(controllers.slickapp.routes.SlickController.index())
+            .flashing("success" -> "作成しました！")
         }
       }
     )
@@ -164,6 +166,36 @@ extends MessagesAbstractController(cc) {
             SlickPerson.slickPersonFind,
             result
           ))
+        }
+      }
+    )
+  }
+
+  def message() = Action.async {implicit request =>
+    messageRepo.listMsgWithPerson().map {messages =>
+      Ok(views.html.message(
+        "Message List",
+        Message.messageForm,
+        messages,
+      ))
+    }
+  }
+
+  def addMessage() = Action.async { implicit request =>
+    Message.messageForm.bindFromRequest.fold(
+      errorForm => {
+        messageRepo.listMsgWithPerson().map { messages =>
+          Ok(views.html.message(
+            "ERROR.",
+            errorForm,
+            messages,
+          ))
+        }
+      },
+      message => {
+        messageRepo.createMsg(message.personId, message.message).map { _ =>
+          Redirect(controllers.slickapp.routes.SlickController.message)
+            .flashing("success" -> "メッセージを作成しました！")
         }
       }
     )

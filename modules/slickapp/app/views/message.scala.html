@@ -1,0 +1,24 @@
+@import models.slickapp.MessageForm
+@import models.slickapp.MessageWithPerson
+@(message: String, form: Form[MessageForm], data: Seq[MessageWithPerson])(
+        implicit request: MessagesRequestHeader, flash: Flash)
+
+@main("Messages") {
+    <p>@flash.get("success").getOrElse(message)</p>
+
+    @helper.form(action=controllers.slickapp.routes.SlickController.addMessage()) {
+        @helper.CSRF.formField
+        @helper.inputText(form("personId"))
+        @helper.inputText(form("message"))
+
+        <input type="submit" value="Add Message"/>
+    }
+
+    <hr>
+
+    <ul>
+        @for(item <- data) {
+            <li>@item.message.id: @item.message.message [@item.person.name]</li>
+        }
+    </ul>
+}
